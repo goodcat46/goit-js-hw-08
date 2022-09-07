@@ -32,8 +32,9 @@ function setVideoCurrentTime() {
   if (getActualTimePoint !== null) {
     // todo Встановлюю час на якому зупинилось відео коли користувач вернеться на сторінку
     player.setCurrentTime(getActualTimePoint);
-    console.log('videoplayer-current-time', getActualTimePoint);
+    console.log('Поточний час відтворення відео', getActualTimePoint);
     return;
   }
   console.log(`ВІдео ще не переглядали`);
+  localStorage.setItem('videoplayer-current-time', '0')
 }
