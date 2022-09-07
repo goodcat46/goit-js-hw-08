@@ -10,22 +10,22 @@ let getActualTimePoint = localStorage.getItem('videoplayer-current-time');
 setVideoCurrentTime();
 //  todo Виводжу у консолль час із котрого почався перегляд
 player.on('play', function () {
-  // todo Записую час у localstorage
-  player.on(
-    'timeupdate',
-    throttle(timeData => {
-      localStorage.setItem('videoplayer-current-time', timeData.seconds);
-    }, 1000)
-  );
   console.log(
     `played the video! At ${localStorage.getItem('videoplayer-current-time')}`
   );
-  // todo Виводжу у консоль час на якому ПЕРЕРВАЛИ перегляд
-  player.on('pause', function () {
-    console.log(
-      `paused the video! At ${localStorage.getItem('videoplayer-current-time')}`
-    );
-  });
+});
+// todo Записую час у localstorage
+player.on(
+  'timeupdate',
+  throttle(timeData => {
+    localStorage.setItem('videoplayer-current-time', timeData.seconds);
+  }, 1000)
+);
+// todo Виводжу у консоль час на якому ПЕРЕРВАЛИ перегляд
+player.on('pause', function () {
+  console.log(
+    `paused the video! At ${localStorage.getItem('videoplayer-current-time')}`
+  );
 });
 
 function setVideoCurrentTime() {
@@ -36,5 +36,5 @@ function setVideoCurrentTime() {
     return;
   }
   console.log(`ВІдео ще не переглядали`);
-  localStorage.setItem('videoplayer-current-time', '0')
+  localStorage.setItem('videoplayer-current-time', '0');
 }
